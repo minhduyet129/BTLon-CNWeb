@@ -1,31 +1,45 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using WebsiteBanBanPhim.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/LayoutPage/_HomeLayout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@{ 
+    IEnumerable<SanPham> lstBanPhimGameThu = (IEnumerable<SanPham>)ViewBag.BanPhimGameThu;
+    IEnumerable<SanPham> lstBanPhimLapTop = (IEnumerable<SanPham>)ViewBag.BanPhimLapTop;
+    IEnumerable<SanPham> lstBanPhimMini = (IEnumerable<SanPham>)ViewBag.BanPhimMini;
+
+}
+
+<div class="container py-xl-4 py-lg-2">
+    
+    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+        <span>O</span>ur
+        <span>N</span>ew
+        <span>P</span>roducts
+    </h3>
+    <div class="row">
+
+        <div class="agileinfo-ads-display col-lg-12">
+            <div class="wrapper">
+
+                <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+                    <h3 class="heading-tittle text-center font-italic">Bàn phím Game thủ</h3>
+                    @Html.Partial("SanPhamPartial", lstBanPhimGameThu)
+                </div>
+
+                <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+                    <h3 class="heading-tittle text-center font-italic">Bàn phím Laptop</h3>
+                    @Html.Partial("SanPhamPartial", lstBanPhimLapTop)
+                </div>
+
+                <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+                    <h3 class="heading-tittle text-center font-italic">Bàn phím Mini</h3>
+                    @Html.Partial("SanPhamPartial", lstBanPhimMini)
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>

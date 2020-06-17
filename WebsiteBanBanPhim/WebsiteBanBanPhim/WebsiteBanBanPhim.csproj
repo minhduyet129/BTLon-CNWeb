@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,9 +128,63 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CTHoaDon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CTPhieuNhap.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemGioHang.cs" />
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiThanhVien.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaCungCap.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhanQuyen.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhanQuyen_QuanTri.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhieuNhap.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanTri.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -131,24 +193,126 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\UserLayout\css\bootstrap.css" />
+    <Content Include="Content\UserLayout\css\creditly.css" />
+    <Content Include="Content\UserLayout\css\easy-responsive-tabs.css" />
+    <Content Include="Content\UserLayout\css\flexslider.css" />
+    <Content Include="Content\UserLayout\css\fontawesome-all.css" />
+    <Content Include="Content\UserLayout\css\menu.css" />
+    <Content Include="Content\UserLayout\css\popuo-box.css" />
+    <Content Include="Content\UserLayout\css\style.css" />
+    <Content Include="Content\UserLayout\images\a.jpg" />
+    <Content Include="Content\UserLayout\images\a3.jpg" />
+    <Content Include="Content\UserLayout\images\a4.jpg" />
+    <Content Include="Content\UserLayout\images\ab.jpg" />
+    <Content Include="Content\UserLayout\images\arrow.png" />
+    <Content Include="Content\UserLayout\images\b1.jpg" />
+    <Content Include="Content\UserLayout\images\b2.jpg" />
+    <Content Include="Content\UserLayout\images\b3.jpg" />
+    <Content Include="Content\UserLayout\images\b4.jpg" />
+    <Content Include="Content\UserLayout\images\bg.jpg" />
+    <Content Include="Content\UserLayout\images\bg2.jpg" />
+    <Content Include="Content\UserLayout\images\close_1.png" />
+    <Content Include="Content\UserLayout\images\h.jpg" />
+    <Content Include="Content\UserLayout\images\image1.png" />
+    <Content Include="Content\UserLayout\images\k1.jpg" />
+    <Content Include="Content\UserLayout\images\k2.jpg" />
+    <Content Include="Content\UserLayout\images\k3.jpg" />
+    <Content Include="Content\UserLayout\images\logo2.png" />
+    <Content Include="Content\UserLayout\images\m1.jpg" />
+    <Content Include="Content\UserLayout\images\m2.jpg" />
+    <Content Include="Content\UserLayout\images\m3.jpg" />
+    <Content Include="Content\UserLayout\images\m4.jpg" />
+    <Content Include="Content\UserLayout\images\m5.jpg" />
+    <Content Include="Content\UserLayout\images\m6.jpg" />
+    <Content Include="Content\UserLayout\images\m7.jpg" />
+    <Content Include="Content\UserLayout\images\m8.jpg" />
+    <Content Include="Content\UserLayout\images\m9.jpg" />
+    <Content Include="Content\UserLayout\images\mk1.jpg" />
+    <Content Include="Content\UserLayout\images\mk2.jpg" />
+    <Content Include="Content\UserLayout\images\mk3.jpg" />
+    <Content Include="Content\UserLayout\images\mk4.jpg" />
+    <Content Include="Content\UserLayout\images\mk5.jpg" />
+    <Content Include="Content\UserLayout\images\mk6.jpg" />
+    <Content Include="Content\UserLayout\images\mk7.jpg" />
+    <Content Include="Content\UserLayout\images\mk8.jpg" />
+    <Content Include="Content\UserLayout\images\mk9.jpg" />
+    <Content Include="Content\UserLayout\images\mm1.jpg" />
+    <Content Include="Content\UserLayout\images\mm2.jpg" />
+    <Content Include="Content\UserLayout\images\mm3.jpg" />
+    <Content Include="Content\UserLayout\images\mm4.jpg" />
+    <Content Include="Content\UserLayout\images\mm5.jpg" />
+    <Content Include="Content\UserLayout\images\mm6.jpg" />
+    <Content Include="Content\UserLayout\images\move-up.png" />
+    <Content Include="Content\UserLayout\images\off1.png" />
+    <Content Include="Content\UserLayout\images\off2.png" />
+    <Content Include="Content\UserLayout\images\pay1.png" />
+    <Content Include="Content\UserLayout\images\pay2.png" />
+    <Content Include="Content\UserLayout\images\pay3.png" />
+    <Content Include="Content\UserLayout\images\pay4.png" />
+    <Content Include="Content\UserLayout\images\pay5.png" />
+    <Content Include="Content\UserLayout\images\pay6.png" />
+    <Content Include="Content\UserLayout\images\pay7.png" />
+    <Content Include="Content\UserLayout\images\pay8.png" />
+    <Content Include="Content\UserLayout\images\pay9.png" />
+    <Content Include="Content\UserLayout\images\paypal.png" />
+    <Content Include="Content\UserLayout\images\search.png" />
+    <Content Include="Content\UserLayout\images\si1.jpg" />
+    <Content Include="Content\UserLayout\images\si2.jpg" />
+    <Content Include="Content\UserLayout\images\si3.jpg" />
+    <Content Include="Content\UserLayout\images\sii1.jpg" />
+    <Content Include="Content\UserLayout\images\sii2.jpg" />
+    <Content Include="Content\UserLayout\images\sii3.jpg" />
+    <Content Include="Content\UserLayout\images\user.jpg" />
+    <Content Include="Content\UserLayout\js\bootstrap.js" />
+    <Content Include="Content\UserLayout\js\creditly.js" />
+    <Content Include="Content\UserLayout\js\creditly2.js" />
+    <Content Include="Content\UserLayout\js\easing.js" />
+    <Content Include="Content\UserLayout\js\easyResponsiveTabs.js" />
+    <Content Include="Content\UserLayout\js\imagezoom.js" />
+    <Content Include="Content\UserLayout\js\jquery-2.2.3.min.js" />
+    <Content Include="Content\UserLayout\js\jquery.flexslider.js" />
+    <Content Include="Content\UserLayout\js\jquery.magnific-popup.js" />
+    <Content Include="Content\UserLayout\js\minicart.js" />
+    <Content Include="Content\UserLayout\js\move-top.js" />
+    <Content Include="Content\UserLayout\js\scroll.js" />
+    <Content Include="Content\UserLayout\js\SmoothScroll.min.js" />
+    <Content Include="Content\UserLayout\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\UserLayout\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\UserLayout\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\1219333204_sku_4921_1.jpg" />
+    <Content Include="Images\1250218500_ban_phim_deo.jpg" />
+    <Content Include="Images\1292573083_ban phim so 500x.jpg" />
+    <Content Include="Images\1302835191_500x.jpg" />
+    <Content Include="Images\1308908752_500x1.jpg" />
+    <Content Include="Images\1313141238_500x.jpg" />
+    <Content Include="Images\1351397915_Ban-phim-laptop-Jizz-JP022-1.jpg" />
+    <Content Include="Images\1364023658_ban-phim-logitech-K100-2.jpg" />
     <Content Include="Images\1371871888_ban-phim-genius-ps2-kb-110.jpg" />
     <Content Include="Images\1374221922_ban-phim-ps2-newmen-raptor-e360-2.jpg" />
     <Content Include="Images\1374900665_1371052320_ban-phim-bluetooth-cho-ipad-mini.jpg" />
+    <Content Include="Images\1377684215_ban-phim-bord-l303-2.jpg" />
     <Content Include="Images\1379758207_ban-phim-e-blue-emk-046bk-cho-quan-game-net.jpg" />
     <Content Include="Images\1394791435_ban-phim-cho-quan-game-net-newmen-kb-835p-cong-ps2.jpg" />
+    <Content Include="Images\1399086379_ban-phim-colorvis-cb18.jpg" />
+    <Content Include="Images\1404555512_ban-phim-hp-usb-family-L110-2.jpg" />
     <Content Include="Images\1414122701_ban-phim-laptop-hyundai-hy-k521-3.jpg" />
     <Content Include="Images\1419760271_Bo-ban-phim-mini-keyboard-UKB-500-RF-3.jpg" />
+    <Content Include="Images\1429351256_ban-phim-shengli-GN-3008-3.jpg" />
     <Content Include="Images\1445341758_ban-phim-may-tinh.jpg" />
     <Content Include="Images\1445422230_ban-phim-may-tinh.jpg" />
     <Content Include="Images\1445430517_ban-phim-may-tinh.jpg" />
     <Content Include="Images\1455703959_ban-phim-marvo-k325.jpg" />
     <Content Include="Images\1455765015_ban_phim_gae_thu_marvo_k828.jpg" />
     <Content Include="Images\1456370189_ban-phim-marvo-k201-4.jpg" />
+    <Content Include="Images\1458100144_ban-phim-may-tinh-hp-sk-2885-n.jpg" />
     <Content Include="Images\1458524455_97.jpg" />
+    <Content Include="Images\1458524631_Keyboard_IBM.jpg" />
+    <Content Include="Images\1458524699_ban-phim-so-laptop-ibm.jpg" />
     <Content Include="Images\1458525021_ban-phim-apple-mini-k1000-1-nho.jpg" />
     <Content Include="Images\1458525333_ban-phim-mitsumi-usb-loai-2-1.jpg" />
     <Content Include="Images\1458525479_ban-phim-game-colorvis-c97-4.jpg" />
@@ -160,10 +324,41 @@
     <Content Include="Images\1458526712_ban-phim-game-colorvis-r100-2.jpg" />
     <Content Include="Images\1458526834_ban-phim-genius-cong-usb-kb-110-1.jpg" />
     <Content Include="Images\1458526923_ban-phim-raoop-8788-1-nho.jpg" />
+    <Content Include="Images\1458527165_keyboard_web.jpg" />
     <Content Include="Images\1466587111_ban-phim-mini-r8-kb1812.jpg" />
     <Content Include="Images\1492594600_ban-phim-may-tinh-foxdigi-mitsumi-k01-2.jpg" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\UserLayout\images\Thumbs.db" />
+    <Content Include="Content\UserLayout\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\UserLayout\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\UserLayout\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\UserLayout\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\UserLayout\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\UserLayout\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\UserLayout\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\UserLayout\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\UserLayout\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\UserLayout\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\UserLayout\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\UserLayout\webfonts\fa-solid-900.woff2" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -183,16 +378,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\LayoutPage\_HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\SanPhamPartial.cshtml" />
+    <Content Include="Views\GioHang\XemGioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Content\UserLayout\coverage\" />
+    <Folder Include="Views\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -206,6 +400,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

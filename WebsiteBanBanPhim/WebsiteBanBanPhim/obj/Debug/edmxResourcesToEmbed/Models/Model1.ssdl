@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBanBanPhimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CTHoaDon">
+    <Key>
+      <PropertyRef Name="MaHD" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaHD" Type="int" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="DonGia" Type="money" />
+  </EntityType>
+  <EntityType Name="CTPhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPN" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaPN" Type="int" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="DonGia" Type="money" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHD" />
+    </Key>
+    <Property Name="MaHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaKH" Type="int" />
+    <Property Name="NgayDat" Type="date" />
+    <Property Name="NgayGiao" Type="date" />
+    <Property Name="DaThanhToan" Type="bit" />
+    <Property Name="ThanhTien" Type="money" />
+    <Property Name="DaHuy" Type="bit" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenKH" Type="nvarchar" MaxLength="100" />
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="32" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="SDT" Type="char" MaxLength="10" />
+    <Property Name="MaLoaiTV" Type="int" />
+  </EntityType>
+  <EntityType Name="LoaiSanPham">
+    <Key>
+      <PropertyRef Name="MaLoaiSP" />
+    </Key>
+    <Property Name="MaLoaiSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LoaiThanhVien">
+    <Key>
+      <PropertyRef Name="MaLoaiTV" />
+    </Key>
+    <Property Name="MaLoaiTV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="100" />
+    <Property Name="GiamGia" Type="int" />
+  </EntityType>
+  <EntityType Name="NhaCungCap">
+    <Key>
+      <PropertyRef Name="MaNCC" />
+    </Key>
+    <Property Name="MaNCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenNCC" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="MaQuyen" />
+    </Key>
+    <Property Name="MaQuyen" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TenQuyen" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PhanQuyen_QuanTri">
+    <Key>
+      <PropertyRef Name="MaAD" />
+      <PropertyRef Name="MaQuyen" />
+    </Key>
+    <Property Name="MaAD" Type="int" Nullable="false" />
+    <Property Name="MaQuyen" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="GhiChu" Type="ntext" />
+  </EntityType>
+  <EntityType Name="PhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPN" />
+    </Key>
+    <Property Name="MaPN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaNCC" Type="int" />
+    <Property Name="NgayNhap" Type="date" />
+    <Property Name="ThanhTien" Type="money" />
+  </EntityType>
+  <EntityType Name="QuanTri">
+    <Key>
+      <PropertyRef Name="MaAD" />
+    </Key>
+    <Property Name="MaAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoLuongTon" Type="int" />
+    <Property Name="DonGia" Type="money" />
+    <Property Name="Mota" Type="ntext" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="255" />
+    <Property Name="DaXoa" Type="bit" />
+    <Property Name="MaLoaiSP" Type="int" />
+  </EntityType>
+  <Association Name="FK__CTHoaDon__MaHD__4316F928">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="CTHoaDon" Type="Self.CTHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHD" />
+      </Principal>
+      <Dependent Role="CTHoaDon">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHoaDon__MaSP__440B1D61">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="CTHoaDon" Type="Self.CTHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="CTHoaDon">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPhieuNha__MaPN__4BAC3F29">
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="1" />
+    <End Role="CTPhieuNhap" Type="Self.CTPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhap">
+        <PropertyRef Name="MaPN" />
+      </Principal>
+      <Dependent Role="CTPhieuNhap">
+        <PropertyRef Name="MaPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPhieuNha__MaSP__4CA06362">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="CTPhieuNhap" Type="Self.CTPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="CTPhieuNhap">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__MaKH__403A8C7D">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KhachHang__MaLoa__3D5E1FD2">
+    <End Role="LoaiThanhVien" Type="Self.LoaiThanhVien" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiThanhVien">
+        <PropertyRef Name="MaLoaiTV" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="MaLoaiTV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhanQuyen___MaAD__534D60F1">
+    <End Role="QuanTri" Type="Self.QuanTri" Multiplicity="1" />
+    <End Role="PhanQuyen_QuanTri" Type="Self.PhanQuyen_QuanTri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuanTri">
+        <PropertyRef Name="MaAD" />
+      </Principal>
+      <Dependent Role="PhanQuyen_QuanTri">
+        <PropertyRef Name="MaAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhanQuyen__MaQuy__5441852A">
+    <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="1" />
+    <End Role="PhanQuyen_QuanTri" Type="Self.PhanQuyen_QuanTri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="MaQuyen" />
+      </Principal>
+      <Dependent Role="PhanQuyen_QuanTri">
+        <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuNhap__MaNCC__48CFD27E">
+    <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCap">
+        <PropertyRef Name="MaNCC" />
+      </Principal>
+      <Dependent Role="PhieuNhap">
+        <PropertyRef Name="MaNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SanPham__MaLoaiS__38996AB5">
+    <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSanPham">
+        <PropertyRef Name="MaLoaiSP" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaLoaiSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebBanBanPhimModelStoreContainer">
+    <EntitySet Name="CTHoaDon" EntityType="Self.CTHoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTPhieuNhap" EntityType="Self.CTPhieuNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiThanhVien" EntityType="Self.LoaiThanhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanQuyen_QuanTri" EntityType="Self.PhanQuyen_QuanTri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuanTri" EntityType="Self.QuanTri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CTHoaDon__MaHD__4316F928" Association="Self.FK__CTHoaDon__MaHD__4316F928">
+      <End Role="HoaDon" EntitySet="HoaDon" />
+      <End Role="CTHoaDon" EntitySet="CTHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHoaDon__MaSP__440B1D61" Association="Self.FK__CTHoaDon__MaSP__440B1D61">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="CTHoaDon" EntitySet="CTHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPhieuNha__MaPN__4BAC3F29" Association="Self.FK__CTPhieuNha__MaPN__4BAC3F29">
+      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+      <End Role="CTPhieuNhap" EntitySet="CTPhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPhieuNha__MaSP__4CA06362" Association="Self.FK__CTPhieuNha__MaSP__4CA06362">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="CTPhieuNhap" EntitySet="CTPhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__MaKH__403A8C7D" Association="Self.FK__HoaDon__MaKH__403A8C7D">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhachHang__MaLoa__3D5E1FD2" Association="Self.FK__KhachHang__MaLoa__3D5E1FD2">
+      <End Role="LoaiThanhVien" EntitySet="LoaiThanhVien" />
+      <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhanQuyen___MaAD__534D60F1" Association="Self.FK__PhanQuyen___MaAD__534D60F1">
+      <End Role="QuanTri" EntitySet="QuanTri" />
+      <End Role="PhanQuyen_QuanTri" EntitySet="PhanQuyen_QuanTri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhanQuyen__MaQuy__5441852A" Association="Self.FK__PhanQuyen__MaQuy__5441852A">
+      <End Role="PhanQuyen" EntitySet="PhanQuyen" />
+      <End Role="PhanQuyen_QuanTri" EntitySet="PhanQuyen_QuanTri" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuNhap__MaNCC__48CFD27E" Association="Self.FK__PhieuNhap__MaNCC__48CFD27E">
+      <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SanPham__MaLoaiS__38996AB5" Association="Self.FK__SanPham__MaLoaiS__38996AB5">
+      <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
