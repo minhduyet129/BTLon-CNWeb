@@ -33,7 +33,16 @@
     <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
     <!-- //web fonts -->
-
+    <style>
+        a.w3view-cart {
+            font-size: 20px;
+            color: #fff;
+            width: 50px;
+            height: 44px;
+            background: #000;
+            border: 1px solid rgba(27, 25, 25, 0.27);
+        }
+    </style>
 </head>
 
 <body>
@@ -47,19 +56,9 @@
                             <i class="fas fa-shopping-cart ml-1"></i>
                         </p>*@
                 </div>
-                <div class="col-lg-8 header-right mt-lg-0 mt-2">
+                <div class="col-lg-8 header-right mt-lg-0 mt-2" style="text-align:right;">
                     <!-- header lists -->
                     <ul>
-                        <li class="text-center border-right text-white">
-                            <a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
-                                <i class="fas fa-map-marker mr-2"></i>Chọn địa chỉ
-                            </a>
-                        </li>
-                        <li class="text-center border-right text-white">
-                            <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
-                                <i class="fas fa-truck mr-2"></i>Giao hàng
-                            </a>
-                        </li>
                         <li class="text-center border-right text-white">
                             <i class="fas fa-phone mr-2"></i> 001 234 5678
                         </li>
@@ -79,27 +78,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Button trigger modal(select-location) -->
-    <div id="small-dialog1" class="mfp-hide">
-        <div class="select-city">
-            <h3>
-                <i class="fas fa-map-marker"></i> Hãy chọn địa chỉ
-            </h3>
-            <select class="list_of_cities">
-                <optgroup label="Thành phố nổi bật">
-                    <option selected style="display:none;color:#eee;">Chọn thành phố</option>
-                    <option>Hà nội</option>
-                    <option>Thành phố HCM</option>
-                    <option>Hà Nam</option>
-                </optgroup>
-
-            </select>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <!-- //shop locator (popup) -->
-    <!-- modals -->
     <!-- log in -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -213,11 +191,9 @@
                         <div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
                             <div class="wthreecartaits wthreecartaits2 cart cart box_1">
                                 <form action="#" method="post" class="last">
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <button class="btn w3view-cart" type="submit" name="submit" value="">
+                                    <a href="@Url.Action("XemGioHang","GioHang")" class="btn w3view-cart" type="submit" name="submit" value="">
                                         <i class="fas fa-cart-arrow-down"></i>
-                                    </button>
+                                    </a>
                                 </form>
                             </div>
                         </div>
@@ -233,201 +209,27 @@
     <div class="navbar-inner">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
                 <div class="agileits-navi_search">
-                    <form action="#" method="post">
-                        <select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
-                            <option value="">All Categories</option>
-                            <option value="Televisions">Televisions</option>
-                            <option value="Headphones">Headphones</option>
-                            <option value="Computers">Computers</option>
-                            <option value="Appliances">Appliances</option>
-                            <option value="Mobiles">Mobiles</option>
-                            <option value="Fruits &amp; Vegetables">Tv &amp; Video</option>
-                            <option value="iPad & Tablets">iPad & Tablets</option>
-                            <option value="Cameras & Camcorders">Cameras & Camcorders</option>
-                            <option value="Home Audio & Theater">Home Audio & Theater</option>
-                        </select>
-                    </form>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>    
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto text-center mr-xl-5">
                         <li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
-                            <a class="nav-link" href="index.html">
-                                Trang chủ
-                                <span class="sr-only">(current)</span>
-                            </a>
+                            <a class="nav-link" href="/Home/Index">Trang chủ</a>
                         </li>
-                        <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Electronics
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="agile_inner_drop_nav_info p-4">
-                                    <h5 class="mb-3">Mobiles, Computers</h5>
-                                    <div class="row">
-                                        <div class="col-sm-6 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product.html">All Mobile Phones</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">All Mobile Accessories</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Cases & Covers</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Screen Protectors</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Power Banks</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">All Certified Refurbished</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Tablets</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Wearable Devices</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Smart Home</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-6 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product.html">Laptops</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Drives & Storage</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Printers & Ink</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Networking Devices</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Computer Accessories</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Game Zone</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">Software</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+                            <a class="nav-link" href="/SanPham/DanhSachSanPham">Sản phẩm</a>
                         </li>
-                        @*<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Appliances
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="agile_inner_drop_nav_info p-4">
-                                    <h5 class="mb-3">TV, Appliances, Electronics</h5>
-                                    <div class="row">
-                                        <div class="col-sm-6 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product2.html">Televisions</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Home Entertainment Systems</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Headphones</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Speakers</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">MP3, Media Players & Accessories</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Audio & Video Accessories</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Cameras</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">DSLR Cameras</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Camera Accessories</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-6 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product2.html">Musical Instruments</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Gaming Consoles</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">All Electronics</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Air Conditioners</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Refrigerators</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Washing Machines</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Kitchen & Home Appliances</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">Heating & Cooling Appliances</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.html">All Appliances</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>*@
                         <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
                             <a class="nav-link" href="about.html">Thông tin liên hệ</a>
                         </li>
                         <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
                             <a class="nav-link" href="product.html">Tin tức</a>
                         </li>
-                        @*<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pages
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="product.html">Product 1</a>
-                                <a class="dropdown-item" href="product2.html">Product 2</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="single.html">Single Product 1</a>
-                                <a class="dropdown-item" href="single2.html">Single Product 2</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="checkout.html">Checkout Page</a>
-                                <a class="dropdown-item" href="payment.html">Payment Page</a>
-                            </div>
-                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Giới thiệu</a>
                         </li>
                     </ul>
                 </div>
+
             </nav>
         </div>
     </div>
@@ -524,7 +326,7 @@
     <!-- top Products -->
     <div class="ads-grid py-sm-5 py-4">
         @RenderBody()
-        
+
     </div>
     <!-- //top products -->
     <!-- middle section -->
@@ -567,13 +369,7 @@
     <footer>
         <div class="footer-top-first">
             <div class="container py-md-5 py-sm-4 py-3">
-                <!-- footer first section -->
-                <h2 class="footer-top-head-w3l font-weight-bold mb-2">Electronics :</h2>
-                <p class="footer-main mb-4">
-                    If you're considering a new laptop, looking for a powerful new car stereo or shopping for a new HDTV, we make it easy to find exactly what you need at a price you can afford. We offer Every Day Low Prices on TVs, laptops, cell phones, tablets and iPads,
-                    video games, desktop computers, cameras and camcorders, audio, video and more.
-                </p>
-                <!-- //footer first section -->
+
                 <!-- footer second section -->
                 <div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
                     <div class="col-md-4 offer-footer">
@@ -729,18 +525,6 @@
             </div>
         </div>
     </footer>
-    <!-- //footer -->
-    <!-- copyright -->
-    <div class="copy-right py-3">
-        <div class="container">
-            <p class="text-center text-white">
-                © 2018 Electro Store. All rights reserved | Design by
-                <a href="http://w3layouts.com"> W3layouts.</a>
-            </p>
-        </div>
-    </div>
-    <!-- //copyright -->
-    <!-- js-files -->
     <!-- jquery -->
     <script src="~/Content/UserLayout/js/jquery-2.2.3.min.js"></script>
     <!-- //jquery -->
@@ -780,7 +564,7 @@
     </script>
     <!-- //popup modal (for location)-->
     <!-- cart-js -->
-    <script src="~/Content/UserLayout/js/minicart.js"></script>
+    @*<script src="~/Content/UserLayout/js/minicart.js"></script>
     <script>
         paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
 
@@ -800,7 +584,7 @@
                 evt.preventDefault();
             }
         });
-    </script>
+    </script>*@
     <!-- //cart-js -->
     <!-- password-script -->
     <script>
@@ -813,7 +597,7 @@
             var pass2 = document.getElementById("password2").value;
             var pass1 = document.getElementById("password1").value;
             if (pass1 != pass2)
-                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+                document.getElementById("password2").setCustomValidity("Mật khẩu không khớp");
             else
                 document.getElementById("password2").setCustomValidity('');
             //empty string means no validation error

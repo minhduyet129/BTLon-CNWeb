@@ -1,0 +1,131 @@
+﻿@using WebsiteBanBanPhim.Models;
+@model ItemGioHang
+
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/LayoutPage/_HomeLayout.cshtml";
+}
+
+@{
+    IEnumerable<ItemGioHang> lstGH = (IEnumerable<ItemGioHang>)ViewBag.GioHang;
+}
+
+<div class="container py-xl-4 py-lg-2">
+    <!-- tittle heading -->
+    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+        <span>Sửa giỏ hàng</span>
+    </h3>
+    <!-- //tittle heading -->
+    <div class="checkout-right">
+        <h4 class="mb-sm-4 mb-3">
+            Giỏ hàng của bạn có:
+            <span>@lstGH.Count() sản phẩm</span>
+        </h4>
+        <div class="table-responsive">
+            <table class="timetable_sub">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in lstGH)
+                    {
+                        if (item.MaSP == Model.MaSP)
+                        {
+                            <form action="/GioHang/CapNhatGioHang" method="post">
+                                @Html.Hidden("MaSP", item.MaSP)
+                                <tr class="rem1">
+                                    <td class="invert">@item.TenSP</td>
+                                    <td class="invert-image">
+                                        <a href="single.html">
+                                            <img src="~/Images/@item.HinhAnh" class="img-responsive">
+                                        </a>
+                                    </td>
+                                    <td class="invert">@item.DonGia.ToString("#,##")</td>
+                                    <td class="invert">
+                                        <div class="quantity">
+                                            <div class="quantity-select">
+                                                <input type="text" name="SoLuongMua" value="@item.SoLuongMua" style="width:80%;" />
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="invert">@item.ThanhTien.ToString("#,##")</td>
+                                    <td class="invert">
+                                        <div class="rem">
+                                            <input type="submit" value="Cập nhật" class="btn btn-success" />
+                                        </div>
+                                    </td>
+                                    <td class="invert">
+                                        <div class="rem">
+                                            <a href="@Url.Action("XoaItemGH", "GioHang", new { @MaSP = item.MaSP })">
+                                                <i class="fa fa-trash-alt"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </form>
+
+                        }
+                        else
+                        {
+                            <tr class="rem1">
+                                <td class="invert">@item.TenSP</td>
+                                <td class="invert-image">
+                                    <a href="single.html">
+                                        <img src="~/Images/@item.HinhAnh" class="img-responsive">
+                                    </a>
+                                </td>
+                                <td class="invert">@item.DonGia.ToString("#,##")</td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <div class="entry value">
+                                                <span>@item.SoLuongMua</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="invert">@item.ThanhTien.ToString("#,##")</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <a href="@Url.Action("SuaGioHang","GioHang",new { @MaSP=item.MaSP})">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <a href="@Url.Action("XoaItemGH","GioHang",new { @MaSP=item.MaSP})">
+                                            <i class="fa fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .invert .rem .fa {
+        font-size: 30px;
+        color: black;
+    }
+
+        .invert .rem .fa:hover {
+            color: #2E62C8;
+        }
+</style>

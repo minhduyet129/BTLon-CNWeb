@@ -9,6 +9,7 @@ namespace WebsiteBanBanPhim.Models
     {
         public int MaSP { get; set; }
         public string TenSP { get; set; }
+        public string HinhAnh { get; set; }
         public decimal DonGia { get; set; }
         public int SoLuongMua { get; set; }
         public decimal ThanhTien { get; set; }
@@ -20,6 +21,7 @@ namespace WebsiteBanBanPhim.Models
                 this.MaSP = maSP;
                 SanPham sp = db.SanPhams.SingleOrDefault(x => x.MaSP == maSP);
                 this.TenSP = sp.TenSP;
+                this.HinhAnh = sp.HinhAnh;
                 this.SoLuongMua = 1;
                 this.DonGia = decimal.Parse(sp.DonGia.Value.ToString());
                 this.ThanhTien = this.SoLuongMua * this.DonGia;
@@ -32,6 +34,7 @@ namespace WebsiteBanBanPhim.Models
                 this.MaSP = maSP;
                 SanPham sp = db.SanPhams.SingleOrDefault(x => x.MaSP == maSP);
                 this.TenSP = sp.TenSP;
+                this.HinhAnh = sp.HinhAnh;
                 this.SoLuongMua = soLuongMua;
                 this.DonGia = decimal.Parse(sp.DonGia.Value.ToString());
                 this.ThanhTien = this.SoLuongMua * this.DonGia;

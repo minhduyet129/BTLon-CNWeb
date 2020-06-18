@@ -1,0 +1,68 @@
+﻿@using WebsiteBanBanPhim.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<SanPham>
+
+@{
+    ViewBag.Title = "DanhSachSanPham";
+    Layout = "~/Views/LayoutPage/_HomeLayout.cshtml";
+}
+<div class="container py-xl-4 py-lg-2">
+    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+        <span>Danh sách sản phẩm</span>
+        
+    </h3>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 product-men mt-5">
+                <div class="men-pro-item simpleCart_shelfItem">
+                    <div class="men-thumb-item text-center">
+                        <img src="~/Images/@item.HinhAnh" style="width:100%;height:250px" alt="">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="#" class="link-product-add-cart">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-info-product text-center border-top mt-4">
+                        <h4 class="pt-1">
+                            <a href="#">@item.TenSP</a>
+                        </h4>
+                        <div class="info-product-price my-2">
+                            <span class="item_price">@item.DonGia.Value.ToString("#,##")</span>
+                            @*<del>$280.00</del>*@
+                        </div>
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <form action="#" method="post">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="add" value="1">
+                                    <input type="hidden" name="business" value=" ">
+                                    <input type="hidden" name="item_name" value="Samsung Galaxy J7">
+                                    <input type="hidden" name="amount" value="200.00">
+                                    <input type="hidden" name="discount_amount" value="1.00">
+                                    <input type="hidden" name="currency_code" value="USD">
+                                    <input type="hidden" name="return" value=" ">
+                                    <input type="hidden" name="cancel_return" value=" ">
+                                    <input type="submit" name="submit" value="Add to cart" class="button btn">
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="col-12" style="margin-top:20px;">
+            Trang @(Model.PageCount<Model.PageNumber? 0 : Model.PageNumber)/@Model.PageCount
+            @Html.PagedListPager(Model, soTrang => Url.Action("DanhSachSanPham", new { page = soTrang }))
+        </div>
+    </div>
+</div>
+
+<style>
+    ul.pagination li a {
+        padding: 4px;
+        background: #E4E4E8;
+    }
+</style>

@@ -58,3 +58,7 @@ G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\EntityFramework.dl
 G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\EntityFramework.SqlServer.dll
 G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\EntityFramework.xml
 G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\EntityFramework.SqlServer.xml
+G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\PagedList.dll
+G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\PagedList.Mvc.dll
+G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\PagedList.xml
+G:\Layout\BTLon-CNWeb\WebsiteBanBanPhim\WebsiteBanBanPhim\bin\PagedList.Mvc.xml

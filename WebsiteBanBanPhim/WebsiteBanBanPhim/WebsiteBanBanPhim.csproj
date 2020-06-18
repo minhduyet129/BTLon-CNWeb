@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -193,6 +199,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\UserLayout\css\bootstrap.css" />
     <Content Include="Content\UserLayout\css\creditly.css" />
     <Content Include="Content\UserLayout\css\easy-responsive-tabs.css" />
@@ -382,11 +389,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\SanPhamPartial.cshtml" />
     <Content Include="Views\GioHang\XemGioHang.cshtml" />
+    <Content Include="Views\LayoutPage\_ProductLayout.cshtml" />
+    <Content Include="Views\SanPham\DanhSachSanPham.cshtml" />
+    <Content Include="Views\SanPham\DanhMucSanPhamPartial.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\SuaGioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\UserLayout\coverage\" />
-    <Folder Include="Views\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

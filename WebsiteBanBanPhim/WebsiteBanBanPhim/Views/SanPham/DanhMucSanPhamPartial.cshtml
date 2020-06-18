@@ -1,0 +1,19 @@
+﻿@using WebsiteBanBanPhim.Models;
+@model LoaiSanPham
+
+@{
+    IEnumerable<LoaiSanPham> lstLoaiSP = (IEnumerable<LoaiSanPham>)ViewBag.lstLoaiSP;
+}
+<div class="search-hotel border-bottom py-2">
+    <h3 class="agileits-sear-head mb-3">Danh mục</h3>
+    <div class="left-side py-2">
+        <ul>
+            @foreach (var item in lstLoaiSP)
+            {
+                <li>
+                    <span class="span">@item.TenLoai</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
